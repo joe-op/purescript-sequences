@@ -2,12 +2,14 @@
   "private": true,
   "devDependencies": {
     "benchmark": "^2.1.4",
-    "pulp": "^12.3.1"
+    "purs-tidy": "^0.10.0",
+    "spago": "0.21.0"
   },
   "scripts": {
-    "postinstall": "bower install",
+    "postinstall": "spago install",
     "bench": "pulp build -I benchmarks --main Benchmark.Main -O --to output/benchmarks.js && (echo '*' | node output/benchmarks.js)",
-    "build": "pulp build",
-    "test": "pulp test"
+    "build": "spago build",
+    "test": "spago test",
+    "tidy": "purs-tidy format-in-place src/**/*.purs && purs-tidy format-in-place test/**/*.purs && purs-tidy format-in-place benchmark/**/*.purs"
   }
 }
